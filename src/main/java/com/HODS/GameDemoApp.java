@@ -6,9 +6,12 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.texture.Texture;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+
 
 public class GameDemoApp extends GameApplication {
 
@@ -22,12 +25,15 @@ public class GameDemoApp extends GameApplication {
         settings.setAppIcon("Ghost1.gif");
     }
 
-
+    public StringProperty imagePath;
+    public ImageView imageView;
 
     @Override
     protected void initGame() {
+        imagePath = new SimpleStringProperty("assets/textures/PacMan1.gif");
+        imageView = new ImageView(imagePath.get());
         player= FXGL.entityBuilder()
-                .view(new ImageView(new Image("assets/textures/PacMan1.gif")))
+                .view(imageView)
                 .build();
         FXGL.getGameWorld().addEntity(player);
 
@@ -38,7 +44,8 @@ public class GameDemoApp extends GameApplication {
         FXGL.getInput().addAction(new UserAction("Move UP") {
             @Override
             protected void onAction() {
-
+                imagePath = new SimpleStringProperty("assets/textures/PacMan2up.gif");
+                imageView = new ImageView(imagePath.get());
                 player.translateY(-5);
             }
         }, KeyCode.UP);
