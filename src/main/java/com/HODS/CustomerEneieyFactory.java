@@ -7,7 +7,7 @@ public class CustomerEneieyFactory {
     public static Entity createEntity(EntityType type){
         switch(type){
             case Player->{
-                Entity entity=FXGL.entityBuilder().view("PacMan1.gif").with(new MoveComponent()).build();
+                Entity entity=FXGL.entityBuilder().with(new MoveComponent()).build();
                 entity.setType(EntityType.Player);
                 return entity;
             }
