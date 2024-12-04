@@ -33,9 +33,14 @@ public class GameDemoApp extends GameApplication {
         imagePath = new SimpleStringProperty("assets/textures/PacMan1.gif");
         imageView = new ImageView(imagePath.get());
         player= FXGL.entityBuilder()
-                .view(imageView)
+                .viewWithBBox(imageView)
                 .build();
+
         FXGL.getGameWorld().addEntity(player);
+
+        System.out.println(player.getCenter());
+        System.out.println(player.getHeight());
+        System.out.println(player.getWidth());
 
     }
 
