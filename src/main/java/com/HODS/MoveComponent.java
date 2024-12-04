@@ -33,7 +33,7 @@ public class MoveComponent extends Component {
             Vec2 dir = Vec2.fromAngle(entity.getRotation()-360)
                     .mulLocal(speedX);
             entity.translate(dir);
-            if(speedX>0d){
+            if(speedX<0d){
                 tempFaceDirection=1;
             }else{
                 tempFaceDirection=2;
@@ -65,10 +65,10 @@ public class MoveComponent extends Component {
     public MoveComponent(){
 
         Image image = new Image("assets/textures/sprite.png");
-        up = new AnimationChannel(image,12,24,24, Duration.seconds(1),0,2);
-        down = new AnimationChannel(image,12,24,24, Duration.seconds(1),3,5);
-        right = new AnimationChannel(image,12,24,24, Duration.seconds(1),6,8);
-        left = new AnimationChannel(image,12,24,24, Duration.seconds(1),9,11);
+        up = new AnimationChannel(image,12,24,24, Duration.seconds(0.5),0,2);
+        down = new AnimationChannel(image,12,24,24, Duration.seconds(0.5),3,5);
+        left = new AnimationChannel(image,12,24,24, Duration.seconds(0.5),6,8);
+        right = new AnimationChannel(image,12,24,24, Duration.seconds(0.5),9,11);
         texture = new AnimatedTexture(up);
         texture.loop();
     }
